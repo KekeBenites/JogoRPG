@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
+#include <time.h>
 
 int vidaheroi = 100, vidainimigo=10;
 int staminaheroi = 10, staminainimigo = 10;
@@ -13,6 +14,7 @@ int main(int argc, char** argv) {
 	int soco();
 	int chute();
 	int especial();
+	int ataqueinimigo();
 	
 	do {
 		menu(vidaheroi, vidainimigo,staminaheroi,staminainimigo,especialheroi,especialinimigo);
@@ -66,7 +68,7 @@ int main(int argc, char** argv) {
 			
 		}
 		
-		
+	vidaheroi -= ataqueinimigo();	
 		
 	}while (op!=0);
 	
@@ -109,4 +111,31 @@ void menu(int vidaheroi, int vidainimigo, int staminaheroi,int staminainimigo,in
 		int especial = 5;
 		printf("Especial");
 		return(especial);
+	}
+	
+	int ataqueinimigo(){
+		srand(time(NULL));
+		int staminainimigo = 5;
+		int randomico = rand() % 3;
+		int resultadoataqueinimigo;
+		
+		
+		switch(randomico){
+			case 1:
+			resultadoataqueinimigo = 1;	
+							
+				break;
+			
+			case 2:	
+			resultadoataqueinimigo = 2;
+				break;
+			
+			case 3:
+			resultadoataqueinimigo = 3;	
+				break;
+								
+		}
+				
+		return (resultadoataqueinimigo);
+		
 	}
