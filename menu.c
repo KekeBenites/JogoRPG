@@ -1,10 +1,10 @@
 #include <stdio.h>
 
 
-void menu(int vidaheroi, int vidainimigo, int staminaheroi,int staminainimigo,int especialheroi, int especialinimigo){
+void menu(int vidaheroi, int vidainimigo, int staminaheroi,int staminainimigo,int especialheroi, int especialinimigo, int level){
 	
-	printf("\n");
-	printf(" ============ HEROI ============ / ============ INIMIGO LVL =============\n ");
+	printf("\n\n\n");
+	printf(" ============ HEROI ============ / ============ INIMIGO LVL %i ===========\n ",level);
        printf("=\t Vida = %i\t \t / = \t Vida = %i\t\t\t=\n ",vidaheroi,vidainimigo);	
 	printf("=\t Stamina = %i\t \t / = \t Stamina = %i\t\t\t=\n ",staminaheroi,staminainimigo);		
    printf("=\t Especial = %i\t \t / = \t Especial =  %i\t\t\t=\n ",especialheroi,especialinimigo);	
