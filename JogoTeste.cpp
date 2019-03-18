@@ -4,34 +4,37 @@
 
 struct Personagem {
 
-int level = 1;
+int levelPersonagem = 1;
 int vidaheroi = 100;
 int staminaheroi = 10;
 int especialheroi = 5;
-float experieniaheroi = 1;	
+int experienciaheroi = 1;	
 
 };
+
+int level = 1;
 
 int  vidainimigo=10;
 int  staminainimigo = 10;
 int  especialinimigo = 5;
-float experienciainimigo = 1;
+int experienciainimigo = 1;
 
 struct Personagem personagem;
 
 int main(int argc, char** argv) {
-	
 
-	
 	int op = 5;
-	void menu(int vidaheroi, int vidainimigo, int staminaheroi,int staminainimigo,int especialheroi, int especialinimigo);
+	void menu(int vidaheroi, int vidainimigo, int staminaheroi,int staminainimigo,int especialheroi, int especialinimigo, int level);
 	int soco();
 	int chute();
 	int especial();
 	int ataqueinimigo();
 	
 	do {
-		menu(personagem.vidaheroi, vidainimigo,personagem.staminaheroi,staminainimigo,personagem.especialheroi,especialinimigo);
+		
+		if (vidainimigo > 0) {
+	
+		menu(personagem.vidaheroi, vidainimigo,personagem.staminaheroi,staminainimigo,personagem.especialheroi,especialinimigo,level);
 		scanf("%i",&op);
 		system("cls"); 
 		
@@ -58,6 +61,9 @@ int main(int argc, char** argv) {
 					vidainimigo -= especial();
 					personagem.especialheroi -= 1;	
 					personagem.staminaheroi -= 5;			
+				} else {
+					
+					printf("Vc nao tem Stamina: ");
 				}
 				
 				break;
@@ -68,11 +74,10 @@ int main(int argc, char** argv) {
 					personagem.staminaheroi = 20;
 				else {
 					personagem.staminaheroi += 5;
-					if (personagem.staminaheroi>20){
-						personagem.staminaheroi = 20;
+									
 					}
 					
-				}
+				
 	
 			default:
 				
@@ -81,7 +86,15 @@ int main(int argc, char** argv) {
 		}
 		
 	personagem.vidaheroi -= ataqueinimigo();	
-		
+} else {
+	level++;
+	vidainimigo = 5 + level;
+	personagem.experienciaheroi += level;
+	
+	
+	
+}
+			
 	}while (op!=0);
 	
 	return 0;
@@ -90,24 +103,25 @@ int main(int argc, char** argv) {
 
 	
 	int soco(){
-		int soco = 1;
+		int soco = 1 * personagem.experienciaheroi;
 		printf("Soco");
 		return (soco);			
 	}
 	
 	int chute(){
-		int chute = 2;
+		int chute = 2 * personagem.experienciaheroi;
 		printf("Chute");
 		return (chute);
 	}
 	
 	int especial(){
-		int especial = 5;
+		int especial = 5 * personagem.experienciaheroi;
 		printf("Especial");
 		return(especial);
 	}
 	
 	int ataqueinimigo(){
+		
 		srand(time(NULL));
 		int staminainimigo = 5;
 		int randomico = rand() % 3;
@@ -127,6 +141,10 @@ int main(int argc, char** argv) {
 			case 3:
 			resultadoataqueinimigo = 3;	
 				break;
+				
+				default:
+					resultadoataqueinimigo = 2;
+					break;
 								
 		}
 				
